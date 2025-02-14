@@ -28,21 +28,14 @@ NestJS adalah sebuah framework berbasis TypeScript yang digunakan untuk membangu
 NestJS juga memiliki kemampuan untuk mengintegrasikan berbagai teknologi lain seperti database, API eksternal, dan layanan real-time. Dukungan terhadap validasi data, manajemen konfigurasi, logging, serta dokumentasi API secara otomatis menjadikan NestJS sebagai pilihan yang sesuai untuk pengembangan aplikasi backend dalam skala kecil maupun besar.
 
 ## PRINSIP NEST JS
-
 Pengembangan aplikasi menggunakan NestJS berfokus pada beberapa prinsip utama:
-Modularitas Sistem dibangun dengan pendekatan berbasis modul agar dapat dikelola dan dikembangkan dengan lebih mudah.
-
-Dependency Injection  Memungkinkan pengelolaan dependensi yang lebih efisien dan meningkatkan fleksibilitas dalam integrasi berbagai komponen.
-
-Middleware & Guards  Mendukung sistem keamanan dan kontrol akses dengan menggunakan middleware serta mekanisme guard.
-
-Validasi & Exception Handling Menyediakan fitur validasi data dan mekanisme penanganan kesalahan secara sistematis.
-
-Real-time Communication  Memiliki dukungan untuk komunikasi real-time menggunakan WebSockets
-
-Manajemen Konfigurasi  Memudahkan pengaturan parameter yang digunakan dalam aplikasi secara terpusat
-
-Logging & Monitoring  Menyediakan mekanisme pencatatan aktivitas sistem untuk keperluan pemantauan dan debugging.
+•	Modularitas Sistem dibangun dengan pendekatan berbasis modul agar dapat dikelola dan dikembangkan dengan lebih mudah.
+•	Dependency Injection  Memungkinkan pengelolaan dependensi yang lebih efisien dan meningkatkan fleksibilitas dalam integrasi berbagai komponen.
+•	Middleware & Guards  Mendukung sistem keamanan dan kontrol akses dengan menggunakan middleware serta mekanisme guard.
+•	Validasi & Exception Handling Menyediakan fitur validasi data dan mekanisme penanganan kesalahan secara sistematis.
+•	Real-time Communication  Memiliki dukungan untuk komunikasi real-time menggunakan WebSockets
+•	Manajemen Konfigurasi  Memudahkan pengaturan parameter yang digunakan dalam aplikasi secara terpusat
+•	Logging & Monitoring  Menyediakan mekanisme pencatatan aktivitas sistem untuk keperluan pemantauan dan debugging.
 
 ## PENGOLAHAN DATABASE
 Sistem backend berfungsi sebagai pusat pemrosesan data dalam suatu aplikasi. Data yang diterima dari klien akan melalui beberapa tahapan sebelum akhirnya dikembalikan sebagai respons. Secara umum, tahapan dalam pemrosesan data pada backend dapat dijelaskan sebagai berikut:
