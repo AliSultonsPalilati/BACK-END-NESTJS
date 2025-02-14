@@ -78,23 +78,26 @@ npm run start:dev
 ## 📂 Struktur Proyek
 
 ### 🔹 File Utama:
-
-- **app.controller.ts** – Mengelola request HTTP.
-- **app.service.ts** – Menangani logika bisnis utama.
-- **app.module.ts** – Modul utama aplikasi.
-- **auth.guard.ts** – Guard untuk autentikasi dan otorisasi.
-- **auth.module.ts** – Modul yang menangani login dan validasi token.
-- **main.ts** – Entry point aplikasi.
-- **prisma.service.ts** – Integrasi database dengan Prisma ORM.
-- **user.decorator.ts** – Dekorator untuk akses informasi pengguna.
-
+<ul>
+    <li><strong>app.controller.spec.ts</strong> - File ini merupakan file pengujian (test) untuk <code>app.controller.ts</code>, biasanya menggunakan Jest untuk memastikan controller berfungsi dengan baik.</li>
+    <li><strong>app.controller.ts</strong> - File ini menangani request HTTP yang masuk dan mengarahkannya ke <code>app.service.ts</code> untuk pemrosesan lebih lanjut.</li>
+    <li><strong>app.module.ts</strong> - Modul utama dalam NestJS yang berfungsi untuk mengimpor dan mengatur modul lain agar aplikasi dapat berjalan.</li>
+    <li><strong>app.service.ts</strong> - Berisi logika bisnis utama yang digunakan oleh <code>app.controller.ts</code> untuk memproses data atau menjalankan fungsi tertentu.</li>
+    <li><strong>auth.guard.ts</strong> - Guard yang digunakan untuk menangani autentikasi dan otorisasi, memastikan bahwa hanya pengguna dengan akses tertentu yang bisa mengakses route tertentu.</li>
+    <li><strong>auth.module.ts</strong> - Modul yang menangani autentikasi, seperti login, registrasi, dan validasi token JWT.</li>
+    <li><strong>main.ts</strong> - Entry point aplikasi yang menginisialisasi NestJS, biasanya dengan fungsi <code>bootstrap()</code>, dan mengatur konfigurasi utama seperti middleware atau global pipe.</li>
+    <li><strong>prisma.service.ts</strong> - Service yang berfungsi sebagai layer untuk berinteraksi dengan database menggunakan Prisma ORM.</li>
+    <li><strong>user.decorator.ts</strong> - Sebuah dekorator custom yang biasanya digunakan untuk mempermudah akses informasi pengguna dari request tanpa harus menulis ulang kode berulang kali.</li>
+</ul>
 ### 🔹 Struktur Folder:
 
-- **chat/** – Mengelola komunikasi real-time dengan WebSocket.
-- **dto/** – Data Transfer Objects untuk validasi data.
-- **entity/** – Representasi tabel dalam database.
-- **profile/** – Mengelola data pengguna.
-- **shared/** – Helper, middleware, dan utilitas.
+<ul>
+    <li><strong>chat</strong> - Berisi tugas project di mana membuat sebuah aplikasi web chat sederhana menggunakan WebSocket. Biasanya berisi controller, service, dan entitas yang menangani komunikasi antar pengguna.</li>
+    <li><strong>dto</strong> - Folder ini berisi Data Transfer Objects (DTO), yaitu class yang digunakan untuk memvalidasi dan mentransformasi data sebelum diproses lebih lanjut dalam service atau controller.</li>
+    <li><strong>entity</strong> - Berisi entitas yang merepresentasikan tabel dalam database. Biasanya digunakan bersama dengan ORM seperti Prisma atau TypeORM.</li>
+    <li><strong>profile</strong> - Kemungkinan besar folder ini digunakan untuk fitur terkait profil pengguna, seperti pengelolaan data user.</li>
+    <li><strong>shared</strong> - Folder ini biasanya berisi layanan atau fungsi yang bisa digunakan di berbagai bagian aplikasi, seperti helper, middleware, atau utilitas.</li>
+</ul>
 
 ## 🏁 Kesimpulan
 
