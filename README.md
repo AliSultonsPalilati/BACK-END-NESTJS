@@ -67,6 +67,95 @@ Keamanan menjadi aspek penting dalam pengembangan backend. Strategi yang umum di
 - **Rate Limiting** – Membatasi jumlah permintaan untuk menghindari penyalahgunaan.
 - **Keamanan Basis Data** – Menerapkan akses minimal dan enkripsi data.
 
+# 📌 Project Structure & Workflow
+
+## 1. Struktur Folder
+```bash
+BELAJAR-NEST/
+│-- dist/                  # Hasil build proyek
+│-- node_modules/          # Dependensi proyek
+│-- prisma/                # Konfigurasi Prisma ORM
+│-- src/                   # Source code utama
+│   ├── chat/              # Modul chat
+│   │   ├── chat.gateway.ts       # WebSocket untuk chat
+│   │   ├── chat.module.ts        # Modul chat
+│   │   ├── chat.service.ts       # Service chat
+│   │   ├── client.html           # Tampilan client chat
+│   │   ├── styles.css            # Styling chat
+│   ├── dto/               # Data Transfer Object (DTO)
+│   │   ├── create-mahasiswa.dto.ts
+│   │   ├── create-ruangan.dto.ts
+│   │   ├── login-user.dto.ts
+│   │   ├── register-user.dto.ts
+│   │   ├── search-mahasiswa.dto.ts
+│   │   ├── update-mahasiswa.dto.ts
+│   ├── entity/            # Entitas database
+│   │   ├── user.entity.ts
+│   ├── profile/           # Modul profile
+│   │   ├── profile.controller.ts  # Controller Profile
+│   │   ├── profile.module.ts      # Module Profile
+│   │   ├── profile.service.ts     # Service Profile
+│   ├── shared/            # Shared modules & services
+│   │   ├── app.controller.ts
+│   │   ├── app.module.ts
+│   │   ├── auth.guard.ts          # Middleware autentikasi
+│   │   ├── auth.module.ts         # Modul autentikasi
+│   │   ├── prisma.service.ts      # Service Prisma
+│-- test/                  # Unit & integration tests
+│-- uploads/               # Folder penyimpanan file upload
+│-- .env                   # Konfigurasi environment
+│-- .gitignore             # File yang diabaikan Git
+│-- package.json           # Konfigurasi npm
+│-- README.md              # Dokumentasi proyek
+│-- tsconfig.json          # Konfigurasi TypeScript
+```
+
+## 2. Alur Kerja
+```mermaid
+graph TD
+  A[Start] -->|User Register/Login| B[Authentication]
+  B -->|Valid Credential| C[Generate Token]
+  B -.->|Invalid Credential| D[Return Error]
+  C -->|Token Issued| E[User Access API]
+  E -->|Valid Token| F[Access Granted]
+  E -.->|Invalid Token| G[Return Unauthorized]
+
+  F -->|Chat Feature| H[WebSocket Communication]
+  H -->|User Join Room| I[Broadcast User Join]
+  H -->|User Send Message| J[Broadcast Message]
+  H -->|User Leave Room| K[Broadcast User Leave]
+```
+
+## 3. Cara Menjalankan Proyek
+```bash
+# Install dependencies
+yarn install  # atau npm install
+
+# Menjalankan server dalam mode development
+yarn start:dev  # atau npm run start:dev
+
+# Menjalankan server dalam mode production
+yarn build && yarn start  # atau npm run build && npm start
+
+# Menjalankan Prisma migration
+yarn prisma migrate dev  # atau npx prisma migrate dev
+```
+
+## 4. Teknologi yang Digunakan
+- **NestJS** - Framework backend berbasis TypeScript
+- **Prisma ORM** - Manajemen database
+- **WebSocket** - Komunikasi real-time
+- **JWT (JSON Web Token)** - Autentikasi
+- **TypeScript** - Bahasa utama
+- **PostgreSQL/MySQL** - Database
+
+📌 **Catatan:** 
+- Pastikan `.env` sudah dikonfigurasi dengan benar sebelum menjalankan proyek.
+- Dokumentasi API dapat ditemukan di endpoint `/api/docs` jika menggunakan Swagger.
+
+🚀 **Selamat coding!**
+
+
 ## 🚀 Menjalankan Proyek
 
 Untuk menjalankan proyek dalam mode pengembangan, gunakan perintah berikut:
