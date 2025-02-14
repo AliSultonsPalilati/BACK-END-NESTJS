@@ -59,36 +59,29 @@ Keamanan merupakan aspek yang sangat penting dalam pengembangan backend. Beberap
 $ npm run start:dev
 $ yang di mana bertujuan untuk menjalankan project dalam mode pengembangan
 
-## FUNGSI SETIAP FILE YANG ADA PARA PROJECT
-### FILE :
-app.controller.spec.ts - File ini merupakan file pengujian (test) untuk app.controller.ts, biasanya menggunakan Jest untuk memastikan controller berfungsi dengan baik.
+<h2>Fungsi Setiap File yang Ada pada Project</h2>
 
-app.controller.ts - File ini menangani request HTTP yang masuk dan mengarahkannya ke app.service.ts untuk pemrosesan lebih lanjut.
+<h3>File:</h3>
+<ul>
+    <li><strong>app.controller.spec.ts</strong> - File ini merupakan file pengujian (test) untuk <code>app.controller.ts</code>, biasanya menggunakan Jest untuk memastikan controller berfungsi dengan baik.</li>
+    <li><strong>app.controller.ts</strong> - File ini menangani request HTTP yang masuk dan mengarahkannya ke <code>app.service.ts</code> untuk pemrosesan lebih lanjut.</li>
+    <li><strong>app.module.ts</strong> - Modul utama dalam NestJS yang berfungsi untuk mengimpor dan mengatur modul lain agar aplikasi dapat berjalan.</li>
+    <li><strong>app.service.ts</strong> - Berisi logika bisnis utama yang digunakan oleh <code>app.controller.ts</code> untuk memproses data atau menjalankan fungsi tertentu.</li>
+    <li><strong>auth.guard.ts</strong> - Guard yang digunakan untuk menangani autentikasi dan otorisasi, memastikan bahwa hanya pengguna dengan akses tertentu yang bisa mengakses route tertentu.</li>
+    <li><strong>auth.module.ts</strong> - Modul yang menangani autentikasi, seperti login, registrasi, dan validasi token JWT.</li>
+    <li><strong>main.ts</strong> - Entry point aplikasi yang menginisialisasi NestJS, biasanya dengan fungsi <code>bootstrap()</code>, dan mengatur konfigurasi utama seperti middleware atau global pipe.</li>
+    <li><strong>prisma.service.ts</strong> - Service yang berfungsi sebagai layer untuk berinteraksi dengan database menggunakan Prisma ORM.</li>
+    <li><strong>user.decorator.ts</strong> - Sebuah dekorator custom yang biasanya digunakan untuk mempermudah akses informasi pengguna dari request tanpa harus menulis ulang kode berulang kali.</li>
+</ul>
 
-app.module.ts - Modul utama dalam NestJS yang berfungsi untuk mengimpor dan mengatur modul lain agar aplikasi dapat berjalan.
-
-app.service.ts - Berisi logika bisnis utama yang digunakan oleh app.controller.ts untuk memproses data atau menjalankan fungsi tertentu.
-
-auth.guard.ts - Guard yang digunakan untuk menangani autentikasi dan otorisasi, memastikan bahwa hanya pengguna dengan akses tertentu yang bisa mengakses route tertentu.
-
-auth.module.ts - Modul yang menangani autentikasi, seperti login, registrasi, dan validasi token JWT.
-
-main.ts - Entry point aplikasi yang menginisialisasi NestJS, biasanya dengan fungsi bootstrap(), dan mengatur konfigurasi utama seperti middleware atau global pipe.
-
-prisma.service.ts - Service yang berfungsi sebagai layer untuk berinteraksi dengan database menggunakan Prisma ORM.
-
-user.decorator.ts - Sebuah dekorator custom yang biasanya digunakan untuk mempermudah akses informasi pengguna dari request tanpa harus menulis ulang kode berulang kali.
-
-### FOLDER :
-chat - berisi Tugas project di mana membuat sebuah aplikasi web chat sederhana menggunakan websocket. Biasanya berisi seperti controller, service, dan entitas yang menangani komunikasi antar pengguna.
-
-dto - Folder ini berisi Data Transfer Objects (DTO), yaitu class yang digunakan untuk memvalidasi dan mentransformasi data sebelum diproses lebih lanjut dalam service atau controller.
-
-entity - Berisi entitas yang merepresentasikan tabel dalam database. Biasanya digunakan bersama dengan ORM seperti Prisma atau TypeORM.
-
-profile - Kemungkinan besar folder ini digunakan untuk fitur terkait profil pengguna, seperti pengelolaan data user.
-
-shared - Folder ini biasanya berisi layanan atau fungsi yang bisa digunakan di berbagai bagian aplikasi, seperti helper, middleware, atau utilitas.
+<h3>Folder:</h3>
+<ul>
+    <li><strong>chat</strong> - Berisi tugas project di mana membuat sebuah aplikasi web chat sederhana menggunakan WebSocket. Biasanya berisi controller, service, dan entitas yang menangani komunikasi antar pengguna.</li>
+    <li><strong>dto</strong> - Folder ini berisi Data Transfer Objects (DTO), yaitu class yang digunakan untuk memvalidasi dan mentransformasi data sebelum diproses lebih lanjut dalam service atau controller.</li>
+    <li><strong>entity</strong> - Berisi entitas yang merepresentasikan tabel dalam database. Biasanya digunakan bersama dengan ORM seperti Prisma atau TypeORM.</li>
+    <li><strong>profile</strong> - Kemungkinan besar folder ini digunakan untuk fitur terkait profil pengguna, seperti pengelolaan data user.</li>
+    <li><strong>shared</strong> - Folder ini biasanya berisi layanan atau fungsi yang bisa digunakan di berbagai bagian aplikasi, seperti helper, middleware, atau utilitas.</li>
+</ul>
 
 ## KESIMPULAN
 NestJS adalah framework backend berbasis TypeScript yang menyediakan arsitektur modular, sistem pengelolaan dependensi yang kuat, serta dukungan untuk komunikasi real-time. Dengan konsep arsitektur yang fleksibel dan pendekatan yang mengutamakan modularitas, NestJS menjadi solusi yang tepat untuk membangun aplikasi backend yang dapat dikembangkan dengan mudah dan dapat menangani berbagai kebutuhan sistem, termasuk pengolahan data, autentikasi pengguna, dan komunikasi real-time. Dalam penerapannya, konsep Dependency Injection, Middleware, Guards, Validasi, Exception Handling, serta Microservices menjadi aspek penting yang memungkinkan aplikasi backend untuk lebih efisien, aman, dan mudah dikembangkan dalam skala besar. Selain itu, penerapan standar keamanan seperti autentikasi, enkripsi data, serta mekanisme pemantauan sistem berperan dalam menjaga keandalan dan performa aplikasi backend dalam lingkungan produksi.
