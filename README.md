@@ -122,21 +122,6 @@ graph TD
   K -.->|Gagal: Token tidak valid| O[Tampilkan error: Token tidak sah]
 ```
 
-## 8. Alur Skema Alur Chat Room dengan WebSocket
-```mermaid
-graph TD
-    A[User Client] -->|Bergabung ke Room| B[Server WebSocket NestJS]
-    B -->|Broadcast User Bergabung| C[ Room Chat]
-    C -->|Memberi Notifikasi ke Semua User| A
-
-    A -->|Mengirim Pesan| B
-    B -->|Broadcast Pesan ke Room| C
-    C -->|Mengirim Pesan ke Semua User| A
-
-    A -->|Keluar dari Room| B
-    B -->|Broadcast User Keluar| C
-    C -->|Memberi Notifikasi ke Semua User| A
-
 ## 🏁 Kesimpulan
 
 NestJS adalah framework backend modern berbasis TypeScript dengan arsitektur modular, manajemen dependensi yang kuat, serta dukungan komunikasi real-time. Dengan berbagai fitur seperti middleware, guard, validasi, dan microservices, NestJS menjadi solusi ideal untuk membangun aplikasi backend yang aman, efisien, dan scalable.
