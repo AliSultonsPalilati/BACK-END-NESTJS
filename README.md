@@ -66,49 +66,58 @@ Keamanan menjadi aspek penting dalam pengembangan backend. Strategi yang umum di
 - **Firewall API** – Membatasi akses tidak sah dan serangan brute-force.
 - **Rate Limiting** – Membatasi jumlah permintaan untuk menghindari penyalahgunaan.
 - **Keamanan Basis Data** – Menerapkan akses minimal dan enkripsi data.
-
-# 📌 Project Structure & Workflow
-
-## 1. Struktur Folder
-```bash
-BELAJAR-NEST/
-│-- dist/                  # Hasil build proyek
-│-- node_modules/          # Dependensi proyek
-│-- prisma/                # Konfigurasi Prisma ORM
-│-- src/                   # Source code utama
-│   ├── chat/              # Modul chat
-│   │   ├── chat.gateway.ts       # WebSocket untuk chat
-│   │   ├── chat.module.ts        # Modul chat
-│   │   ├── chat.service.ts       # Service chat
-│   │   ├── client.html           # Tampilan client chat
-│   │   ├── styles.css            # Styling chat
-│   ├── dto/               # Data Transfer Object (DTO)
-│   │   ├── create-mahasiswa.dto.ts
-│   │   ├── create-ruangan.dto.ts
-│   │   ├── login-user.dto.ts
-│   │   ├── register-user.dto.ts
-│   │   ├── search-mahasiswa.dto.ts
-│   │   ├── update-mahasiswa.dto.ts
-│   ├── entity/            # Entitas database
-│   │   ├── user.entity.ts
-│   ├── profile/           # Modul profile
-│   │   ├── profile.controller.ts  # Controller Profile
-│   │   ├── profile.module.ts      # Module Profile
-│   │   ├── profile.service.ts     # Service Profile
-│   ├── shared/            # Shared modules & services
-│   │   ├── app.controller.ts
-│   │   ├── app.module.ts
-│   │   ├── auth.guard.ts          # Middleware autentikasi
-│   │   ├── auth.module.ts         # Modul autentikasi
-│   │   ├── prisma.service.ts      # Service Prisma
-│-- test/                  # Unit & integration tests
-│-- uploads/               # Folder penyimpanan file upload
-│-- .env                   # Konfigurasi environment
-│-- .gitignore             # File yang diabaikan Git
-│-- package.json           # Konfigurasi npm
-│-- README.md              # Dokumentasi proyek
-│-- tsconfig.json          # Konfigurasi TypeScript
-```
+📦lab-nestjs/
+├── 📂node_modules/
+├── 📂prisma/
+│   ├── prisma.schema
+├── 📂public/
+│   ├── 🟨app.js
+│   ├── 🟧index.html
+│   ├── 🟦styles.css
+├── 📂src/
+│   ├── 📂chat/
+│   |   |-- chat.gateaway.spec.ts
+│   |   |-- chat.gateaway.ts
+│   |   |-- chat.module.ts
+│   |   |-- chat.service.spec.ts
+│   |   |-- chat.service.ts
+│   ├── 📂dto/
+│   |   |-- create-mahasiswa.dto.ts
+│   |   |-- register-user.dto.ts
+│   ├── 📂entity/
+│   |   |-- user.entity.ts
+│   ├── 📂mahasiswa-profile/
+│   |   |-- mahasiswa-profile.controller.spec.ts
+│   |   |-- mahasiswa-profile.controller.ts
+│   |   |-- mahasiswa-profile.module.ts
+│   |   |-- mahasiswa-profile.service.spec.ts
+│   |   |-- mahasiswa-profile.service.ts
+│   ├── 📂profile/
+│   |   |-- profile.controller.spec.ts
+│   |   |-- profile.controller.ts
+│   |   |-- profile.module.ts
+│   |   |-- profile.service.spec.ts
+│   |   |-- profile.service.ts
+│   |-- app.controller.spec.ts
+│   |-- app.controller.ts
+│   |-- app.module.ts
+│   |-- app.service.ts
+│   |-- auth.guard.ts
+│   |-- auth.module.ts
+│   |-- 🟦main.ts
+│   |-- 🟦prisma.ts
+│   |-- 🟦user.decorator.ts
+├── 📂test/
+├── 📂uploads/
+├── .env
+├── .gitignore
+├── .prettierrc
+├── nest-cli.json
+├── package-lock.json 
+├── package.json 
+├── README.md 
+├── tsconfig.build.json 
+├── tsconfig.json 
 
 ## 2. Alur Kerja
 ```mermaid
