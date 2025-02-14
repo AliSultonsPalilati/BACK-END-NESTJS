@@ -27,12 +27,6 @@
 NestJS adalah sebuah framework berbasis TypeScript yang digunakan untuk membangun aplikasi backend yang modular, efisien, dan fleksibel. Framework ini dirancang dengan konsep arsitektur berbasis modul, yang memungkinkan pengelolaan berbagai fitur dalam aplikasi menjadi lebih terstruktur dan terorganisir. Dalam pengembangannya, NestJS mengadopsi konsep Dependency Injection (DI), yang memungkinkan pengembang menulis kode yang lebih bersih, mudah diuji, dan mudah dipelihara. Selain itu, framework ini menyediakan fitur bawaan seperti middleware, interceptor, pipe, dan guard yang dapat digunakan untuk meningkatkan keamanan serta fleksibilitas dalam pengolahan data pada sistem backend.
 NestJS juga memiliki kemampuan untuk mengintegrasikan berbagai teknologi lain seperti database, API eksternal, dan layanan real-time. Dukungan terhadap validasi data, manajemen konfigurasi, logging, serta dokumentasi API secara otomatis menjadikan NestJS sebagai pilihan yang sesuai untuk pengembangan aplikasi backend dalam skala kecil maupun besar.
 
-## KONSEP ARSITEKTUR
-
-NestJS adalah sebuah framework berbasis TypeScript yang digunakan untuk membangun aplikasi backend yang modular, efisien, dan fleksibel. Framework ini dirancang dengan konsep arsitektur berbasis modul, yang memungkinkan pengelolaan berbagai fitur dalam aplikasi menjadi lebih terstruktur dan terorganisir.
-Dalam pengembangannya, NestJS mengadopsi konsep Dependency Injection (DI), yang memungkinkan pengembang menulis kode yang lebih bersih, mudah diuji, dan mudah dipelihara. Selain itu, framework ini menyediakan fitur bawaan seperti middleware, interceptor, pipe, dan guard yang dapat digunakan untuk meningkatkan keamanan serta fleksibilitas dalam pengolahan data pada sistem backend.
-NestJS juga memiliki kemampuan untuk mengintegrasikan berbagai teknologi lain seperti database, API eksternal, dan layanan real-time. Dukungan terhadap validasi data, manajemen konfigurasi, logging, serta dokumentasi API secara otomatis menjadikan NestJS sebagai pilihan yang sesuai untuk pengembangan aplikasi backend dalam skala kecil maupun besar.
-
 ## PRINSIP NEST JS
 
 Pengembangan aplikasi menggunakan NestJS berfokus pada beberapa prinsip utama:
@@ -56,8 +50,6 @@ Penerimaan Permintaan  Backend menerima permintaan dari klien melalui protokol H
 
 Validasi Data  Data yang dikirimkan oleh klien diperiksa untuk memastikan kesesuaiannya dengan aturan yang telah ditentukan .
 
-Pemrosesan Logika Bisnis  Data yang valid akan diproses sesuai dengan aturan bisnis yang berlaku dalam sistem.
-
 Interaksi dengan Database  Jika diperlukan, backend akan mengambil atau menyimpan data ke dalam database.
 
 Penyusunan Respons Hasil dari pemrosesan data akan dikemas dalam format yang sesuai dan dikirim kembali ke klien.
@@ -65,16 +57,43 @@ Penyusunan Respons Hasil dari pemrosesan data akan dikemas dalam format yang ses
 ## MODEL KOMUNIKASI DALAM BACKEND
 Backend dapat berkomunikasi dengan klien menggunakan beberapa model komunikasi, di antaranya RESTful API, GraphQL, WebSockets, dan gRPC. RESTful API adalah model komunikasi berbasis HTTP yang menggunakan metode seperti GET, POST, PUT, dan DELETE untuk mengelola data. GraphQL memungkinkan klien mengambil data sesuai dengan kebutuhan spesifik tanpa harus mengikuti struktur yang kaku seperti REST. WebSockets mendukung komunikasi dua arah yang memungkinkan transfer data secara real-time tanpa perlu melakukan permintaan HTTP berulang kali. Sementara itu, gRPC menggunakan mekanisme serialisasi berbasis Protobuf untuk mempercepat pengiriman data dan mengoptimalkan performa backend
 
-## MICROSERVICE BACKEND
-Dalam pengembangan aplikasi backend, terdapat pendekatan monolithic dan microservices. Pendekatan monolithic menggabungkan semua komponen aplikasi dalam satu kesatuan, sedangkan microservices memecah sistem menjadi layanan-layanan kecil yang saling berinteraksi. Arsitektur microservices memiliki beberapa keuntungan, seperti skalabilitas, fleksibilitas teknologi, pemeliharaan yang lebih mudah, peningkatan ketahanan sistem, serta optimasi performa. Dengan microservices, setiap layanan dapat dikembangkan dan dikelola secara independen, sehingga perubahan pada satu layanan tidak akan mempengaruhi layanan lainnya. Jika salah satu layanan mengalami kegagalan, layanan lainnya tetap dapat berfungsi, sehingga meningkatkan ketahanan sistem secara keseluruhan.
-
-
 ## KEAMANAN DALAM BACKEND
 Keamanan merupakan aspek yang sangat penting dalam pengembangan backend. Beberapa strategi yang umum digunakan untuk meningkatkan keamanan backend antara lain autentikasi dan otorisasi, enkripsi data, firewall API, rate limiting, serta keamanan basis data. Autentikasi dan otorisasi dapat diterapkan menggunakan metode seperti OAuth, JWT, atau sesi berbasis token untuk mengamankan akses pengguna. Enkripsi data menggunakan algoritma seperti AES atau RSA untuk melindungi informasi sensitif. Firewall API berfungsi untuk mencegah akses tidak sah dan serangan brute-force dengan membatasi akses API. Rate limiting digunakan untuk membatasi jumlah permintaan dalam jangka waktu tertentu guna mencegah penyalahgunaan sistem. Selain itu, keamanan basis data diterapkan dengan menerapkan prinsip akses minimal serta mengenkripsi data untuk mencegah kebocoran informasi.
 
 ## CARA MENJALANKAN PROJECTNYA 
 $ npm run start:dev
-yang di mana bertujuan untuk menjalankan project dalam mode pengembangan
+$ yang di mana bertujuan untuk menjalankan project dalam mode pengembangan
+
+## FUNGSI SETIAP FILE YANG ADA PARA PROJECT
+### FILE :
+app.controller.spec.ts - File ini merupakan file pengujian (test) untuk app.controller.ts, biasanya menggunakan Jest untuk memastikan controller berfungsi dengan baik.
+
+app.controller.ts - File ini menangani request HTTP yang masuk dan mengarahkannya ke app.service.ts untuk pemrosesan lebih lanjut.
+
+app.module.ts - Modul utama dalam NestJS yang berfungsi untuk mengimpor dan mengatur modul lain agar aplikasi dapat berjalan.
+
+app.service.ts - Berisi logika bisnis utama yang digunakan oleh app.controller.ts untuk memproses data atau menjalankan fungsi tertentu.
+
+auth.guard.ts - Guard yang digunakan untuk menangani autentikasi dan otorisasi, memastikan bahwa hanya pengguna dengan akses tertentu yang bisa mengakses route tertentu.
+
+auth.module.ts - Modul yang menangani autentikasi, seperti login, registrasi, dan validasi token JWT.
+
+main.ts - Entry point aplikasi yang menginisialisasi NestJS, biasanya dengan fungsi bootstrap(), dan mengatur konfigurasi utama seperti middleware atau global pipe.
+
+prisma.service.ts - Service yang berfungsi sebagai layer untuk berinteraksi dengan database menggunakan Prisma ORM.
+
+user.decorator.ts - Sebuah dekorator custom yang biasanya digunakan untuk mempermudah akses informasi pengguna dari request tanpa harus menulis ulang kode berulang kali.
+
+### FOLDER :
+chat - berisi Tugas project di mana membuat sebuah aplikasi web chat sederhana menggunakan websocket. Biasanya berisi seperti controller, service, dan entitas yang menangani komunikasi antar pengguna.
+
+dto - Folder ini berisi Data Transfer Objects (DTO), yaitu class yang digunakan untuk memvalidasi dan mentransformasi data sebelum diproses lebih lanjut dalam service atau controller.
+
+entity - Berisi entitas yang merepresentasikan tabel dalam database. Biasanya digunakan bersama dengan ORM seperti Prisma atau TypeORM.
+
+profile - Kemungkinan besar folder ini digunakan untuk fitur terkait profil pengguna, seperti pengelolaan data user.
+
+shared - Folder ini biasanya berisi layanan atau fungsi yang bisa digunakan di berbagai bagian aplikasi, seperti helper, middleware, atau utilitas.
 
 ## KESIMPULAN
 NestJS adalah framework backend berbasis TypeScript yang menyediakan arsitektur modular, sistem pengelolaan dependensi yang kuat, serta dukungan untuk komunikasi real-time. Dengan konsep arsitektur yang fleksibel dan pendekatan yang mengutamakan modularitas, NestJS menjadi solusi yang tepat untuk membangun aplikasi backend yang dapat dikembangkan dengan mudah dan dapat menangani berbagai kebutuhan sistem, termasuk pengolahan data, autentikasi pengguna, dan komunikasi real-time. Dalam penerapannya, konsep Dependency Injection, Middleware, Guards, Validasi, Exception Handling, serta Microservices menjadi aspek penting yang memungkinkan aplikasi backend untuk lebih efisien, aman, dan mudah dikembangkan dalam skala besar. Selain itu, penerapan standar keamanan seperti autentikasi, enkripsi data, serta mekanisme pemantauan sistem berperan dalam menjaga keandalan dan performa aplikasi backend dalam lingkungan produksi.
