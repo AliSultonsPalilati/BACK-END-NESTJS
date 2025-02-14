@@ -99,6 +99,45 @@ npm run start:dev
     <li><strong>shared</strong> - Folder ini biasanya berisi layanan atau fungsi yang bisa digunakan di berbagai bagian aplikasi, seperti helper, middleware, atau utilitas.</li>
 </ul>
 
+## 7. ALUR KERJA REGISTER USER, LOGIN DAN AUTHENTICATION
+mermaid
+graph TD
+  %% Registrasi Pengguna
+  A[Mulai: Register] -->|Pengguna mengisi data| B[Simpan data pengguna]
+  B -->|Sukses| C[Tampilkan pesan sukses]
+  B -.->|Gagal: Username sudah digunakan| I[Tampilkan error: Akun sudah ada]
+
+  %% Login dan Autentikasi
+  D[Mulai: Login] -->|Pengguna memasukkan kredensial| E[Periksa username]
+  E -->|Valid| F[Periksa password]
+  E -.->|Gagal: Username tidak ditemukan| L[Tampilkan error: Akun tidak terdaftar]
+  F -->|Valid| G[Generate token]
+  F -.->|Gagal: Password salah| M[Tampilkan error: Password salah]
+  G -->|Sukses| H[Return token]
+  H -->|Sukses| J[Pengguna menyimpan token & mengakses API]
+
+  %% Autentikasi Token
+  J -->|Mengakses API dengan token| K[Verifikasi token]
+  K -->|Valid| N[Akses API diberikan]
+  K -.->|Gagal: Token tidak valid| O[Tampilkan error: Token tidak sah]
+
+---
+## 8. ALUR SKEMA ALUR CHAT ROOM DENGAN WEBSOCKET
+mermaid
+graph TD
+    A[User Client] -->|Bergabung ke Room| B[Server WebSocket NestJS]
+    B -->|Broadcast User Bergabung| C[ Room Chat]
+    C -->|Memberi Notifikasi ke Semua User| A
+
+     A -->|Mengirim Pesan| B
+    B -->|Broadcast Pesan ke Room| C
+    C -->|Mengirim Pesan ke Semua User| A
+
+    A -->|Keluar dari Room| B
+    B -->|Broadcast User Keluar| C
+    C -->|Memberi Notifikasi ke Semua User| A
+
+
 ## 🏁 Kesimpulan
 
 NestJS adalah framework backend modern berbasis TypeScript dengan arsitektur modular, manajemen dependensi yang kuat, serta dukungan komunikasi real-time. Dengan berbagai fitur seperti middleware, guard, validasi, dan microservices, NestJS menjadi solusi ideal untuk membangun aplikasi backend yang aman, efisien, dan scalable.
