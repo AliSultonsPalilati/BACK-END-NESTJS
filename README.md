@@ -99,8 +99,8 @@ npm run start:dev
     <li><strong>shared</strong> - Folder ini biasanya berisi layanan atau fungsi yang bisa digunakan di berbagai bagian aplikasi, seperti helper, middleware, atau utilitas.</li>
 </ul>
 
-## 7. ALUR KERJA REGISTER USER, LOGIN DAN AUTHENTICATION
-mermaid
+## 7. Alur Kerja Register User, Login, dan Authentication
+```mermaid
 graph TD
   %% Registrasi Pengguna
   A[Mulai: Register] -->|Pengguna mengisi data| B[Simpan data pengguna]
@@ -120,23 +120,22 @@ graph TD
   J -->|Mengakses API dengan token| K[Verifikasi token]
   K -->|Valid| N[Akses API diberikan]
   K -.->|Gagal: Token tidak valid| O[Tampilkan error: Token tidak sah]
+```
 
----
-## 8. ALUR SKEMA ALUR CHAT ROOM DENGAN WEBSOCKET
-mermaid
+## 8. Alur Skema Alur Chat Room dengan WebSocket
+```mermaid
 graph TD
     A[User Client] -->|Bergabung ke Room| B[Server WebSocket NestJS]
     B -->|Broadcast User Bergabung| C[ Room Chat]
     C -->|Memberi Notifikasi ke Semua User| A
 
-     A -->|Mengirim Pesan| B
+    A -->|Mengirim Pesan| B
     B -->|Broadcast Pesan ke Room| C
     C -->|Mengirim Pesan ke Semua User| A
 
     A -->|Keluar dari Room| B
     B -->|Broadcast User Keluar| C
     C -->|Memberi Notifikasi ke Semua User| A
-
 
 ## 🏁 Kesimpulan
 
