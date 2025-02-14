@@ -89,8 +89,8 @@ npm run start:dev
     <li><strong>prisma.service.ts</strong> - Service yang berfungsi sebagai layer untuk berinteraksi dengan database menggunakan Prisma ORM.</li>
     <li><strong>user.decorator.ts</strong> - Sebuah dekorator custom yang biasanya digunakan untuk mempermudah akses informasi pengguna dari request tanpa harus menulis ulang kode berulang kali.</li>
 </ul>
-### 🔹 Struktur Folder:
 
+### 🔹 Struktur Folder:
 <ul>
     <li><strong>chat</strong> - Berisi tugas project di mana membuat sebuah aplikasi web chat sederhana menggunakan WebSocket. Biasanya berisi controller, service, dan entitas yang menangani komunikasi antar pengguna.</li>
     <li><strong>dto</strong> - Folder ini berisi Data Transfer Objects (DTO), yaitu class yang digunakan untuk memvalidasi dan mentransformasi data sebelum diproses lebih lanjut dalam service atau controller.</li>
@@ -104,8 +104,4 @@ npm run start:dev
 NestJS adalah framework backend modern berbasis TypeScript dengan arsitektur modular, manajemen dependensi yang kuat, serta dukungan komunikasi real-time. Dengan berbagai fitur seperti middleware, guard, validasi, dan microservices, NestJS menjadi solusi ideal untuk membangun aplikasi backend yang aman, efisien, dan scalable.
 
 ---
-
-✅ **Dukungan & Kontribusi**
-
-Jika Anda ingin berkontribusi atau membutuhkan bantuan lebih lanjut, silakan bergabung dengan komunitas di [Discord](https://discord.gg/G7Qnnhy) atau [Open Collective](https://opencollective.com/nest).
 
