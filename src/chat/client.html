@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <link rel="stylesheet" href="styles.css" />
+    <title>Aplikasi Chat Alisultn</title>
+</head>
+<body>
+    <div class="username-container" id="username-container">
+        <div class="username-box">
+            <input type="text" id="username-input" placeholder="Masukkan username Anda">
+            <button id="username-button">Mulai Chat</button>
+        </div>
+    </div>
+
+    <div class="chat-container" id="chat-container">
+        <div class="chat-header">
+            <h2>Chat - <span id="current-username"></span></h2>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="messages-container" id="messages-container"></div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Ketik pesan...">
+            <button id="send-button">Kirim</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script>
+        let currentUsername = '';
+        const socket = io("http://localhost:3000", {
+            path: "/socket",
+        });
+
+        // DOM Elements
+        const usernameContainer = document.getElementById('username-container');
+        const chatContainer = document.getElementById('chat-container');
+        const messagesContainer = document.getElementById('messages-container');
+        const messageInput = document.getElementById('message-input');
+        const sendButton = document.getElementById('send-button');
+        const usernameInput = document.getElementById('username-input');
+        const usernameButton = document.getElementById('username-button');
+        const currentUsernameSpan = document.getElementById('current-username');
+        const chatMessages = document.getElementById('chat-messages');
+
+        // Username setup
+        usernameButton.addEventListener('click', () => {
+            currentUsername = usernameInput.value.trim();
+            if (currentUsername) {
+                usernameContainer.style.display = 'none';
+                currentUsernameSpan.textContent = currentUsername;
+                socket.emit('user-connected', currentUsername);
+            }
+        });
+
+        // Send message function
+        function sendMessage() {
+            const messageText = messageInput.value.trim();
+            if (messageText && currentUsername) {
+                const messageData = {
+                    message: messageText,
+                    username: currentUsername,
+                    timestamp: new Date().toLocaleTimeString('id-ID', { 
+                        hour: '2-digit', 
+                        minute: '2-digit'
+                    })
+                };
+                
+                socket.emit('chat-send', messageData);
+                addMessage(messageData, 'sent');
+                messageInput.value = '';
+            }
+        }
+
+        // Add message to UI
+        function addMessage(data, type) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', type);
+            
+            if (type === 'system') {
+                messageElement.innerHTML = `
+                    <div class="message-content">
+                        ${data.message}
+                        <span class="timestamp">${data.timestamp}</span>
+                    </div>
+                `;
+            } else {
+                messageElement.innerHTML = `
+                    <div class="message-content">
+                        ${type === 'received' ? `<div class="username">${data.username}</div>` : ''}
+                        ${data.message}
+                        <span class="timestamp">${data.timestamp}</span>
+                    </div>
+                `;
+            }
+            
+            messagesContainer.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Event listeners
+        sendButton.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Socket events
+        socket.on('chat-receive', (data) => {
+            if (data.username !== currentUsername) {
+                addMessage(data, 'received');
+            }
+        });
+
+        socket.on('user-connected', (username) => {
+            if (username !== currentUsername) {
+                const systemMessage = {
+                    message: `${username} bergabung dalam chat`,
+                    timestamp: new Date().toLocaleTimeString('id-ID', { 
+                        hour: '2-digit', 
+                        minute: '2-digit'
+                    })
+                };
+                addMessage(systemMessage, 'system');
+            }
+        });
+
+        socket.on('user-disconnected', (username) => {
+            const systemMessage = {
+                message: `${username} meninggalkan chat`,
+                timestamp: new Date().toLocaleTimeString('id-ID', { 
+                    hour: '2-digit', 
+                    minute: '2-digit'
+                })
+            };
+            addMessage(systemMessage, 'system');
+        });
+    </script>
+</body>
+</html>

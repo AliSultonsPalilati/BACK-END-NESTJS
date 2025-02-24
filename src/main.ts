@@ -18,7 +18,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Belajar NestJS Alisultn')
     .setDescription(
-      'Belajar NestJS adalah tutorial yang dibangun menggunakan framework NestJS',
+      'Belajar NestJS || tutorial yang dibangun menggunakan framework NestJS',
     )
     .setVersion('1.0')
     .addBearerAuth()
@@ -26,7 +26,7 @@ async function bootstrap() {
 
   const documentFactory = () => SwaggerModule.createDocument(app, config);
 
-  SwaggerModule.setup('utama', app, documentFactory); // untuk 'utama' itu adalah path atau jalur atau lokasi file atai directory
+  SwaggerModule.setup('utama', app, documentFactory); 
 
   await app.listen(process.env.PORT ?? 3000);
 

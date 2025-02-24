@@ -26,15 +26,4 @@ export class registerUserDTO {
     @Length(1, 30)
     password: string;
 
-    // @ApiProperty({
-    //     description: 'email',
-    //     type: String,
-    //     example: 'Email',
-    //     required: true,
-    // })
-    // @IsString()
-    // @IsNotEmpty()    
-    // @Matches(/^\S*$/i)
-    // @Length(1, 50)
-    // email: string;
 }
